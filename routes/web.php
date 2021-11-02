@@ -37,8 +37,23 @@ Route::get('cart', [CartController::class, 'cartList'])
 
 Route::get('cart/order',[OrderController::class, 'order'])
     ->name('cart.order');
+
 Route::post('cart/order',[OrderController::class, 'orderStore'])
     ->name('cart.order.store');
+
+
+
+Route::get('/signup',[\App\Http\Controllers\AuthController::class,'showSignupForm'])
+    ->name('auth.signup.form');
+
+Route::post('/signup',[\App\Http\Controllers\AuthController::class,'signup'])
+    ->name('auth.signup');
+
+Route::get('signin',[\App\Http\Controllers\AuthController::class,'showSigninForm'])
+    ->name('auth.signin.form');
+
+Route::post('signin',[\App\Http\Controllers\AuthController::class,'signin'])
+    ->name('auth.signin');
 
 
 

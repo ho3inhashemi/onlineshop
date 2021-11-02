@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\AmazingProduct;
+use App\Models\Category;
 use App\Models\Slider;
 use Illuminate\Database\Seeder;
 
@@ -18,5 +19,6 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         Slider::factory(3)->create();
         AmazingProduct::factory(9)->create();
+        Category::factory(3)->create();
     }
 }

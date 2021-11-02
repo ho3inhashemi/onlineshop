@@ -23,8 +23,8 @@
             </a>
 
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                {{-- <a class="dropdown-item" href="{{ route('auth.signin.form') }}">ورود</a>
-                <a class="dropdown-item" href="{{ route('auth.signup.form') }}">ثبت نام</a> --}}
+                 <a class="dropdown-item" href="{{ route('auth.signin.form') }}">ورود</a>
+                <a class="dropdown-item" href="{{ route('auth.signup.form') }}">ثبت نام</a> 
             </div>
         </div>
 
@@ -36,19 +36,19 @@
             <li class="nav-item active">
               <a class="nav-link active" href="#">home</a>
             </li>
-            {{-- @foreach ($categories as $category)
+            @foreach ($categories as $category)
 
             <li class="nav-item">
               <a class="nav-link" href="#">@if ($category->parent_id == null)
                {{ $category->name }}@endif</a>
             </li>
 
-            @endforeach --}}
+            @endforeach
           </ul>
 
-          {{-- <a href="{{ route('cart.list') }}" class="btn btn-primary mx-5 px-3">
+          <a href="{{ route('cart.list') }}" class="btn btn-primary mx-5 px-3">
              Cart
-          </a> --}}
+          </a>
 
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
