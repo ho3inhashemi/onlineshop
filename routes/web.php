@@ -24,7 +24,7 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/', [GlobalController::class, 'index'])
     ->name('home');
 
-Route::get('amazingproduct/{amazingProduct}',AmazingProductController::class)
+Route::get('amazingproduct/{amazingProduct}', AmazingProductController::class)
     ->name('amazingproduct.show');
 
 Route::post('cart', [CartController::class, 'addToCart'])
