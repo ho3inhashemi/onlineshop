@@ -15,7 +15,7 @@ class AmazingProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-        public function show($slug)
+        public function __invoke($slug)
         {
             $amazingProduct = AmazingProduct::query()->where('slug',$slug)->firstOrFail();
 
