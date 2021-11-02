@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AmazingProductController;
+use App\Http\Controllers\GlobalController;
 use Illuminate\Support\Facades\Route;
+use TCG\Voyager\Facades\Voyager;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Route::get('/', [GlobalController::class, 'index'])
+    ->name('home');
+
+Route::get('amazingproduct/{amazingProduct}',[AmazingProductController::class, 'show'])
+    ->name('amazingproduct.show');
