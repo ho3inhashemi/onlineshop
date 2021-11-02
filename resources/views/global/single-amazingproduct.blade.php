@@ -13,8 +13,7 @@
           <p class="card-text">{{ $amazingProduct->explanation }} </p>
           {{-- <a href="{{ url('add-to-cart/'.$amazingProduct->id) }}" class="btn btn-primary stretched-link" role="button">Add To Cart</a> --}}
 
-          {{-- <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data"> --}}
-            <form action="">
+          <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="hidden" value="{{ $amazingProduct->id }}" name="id">
             <input type="hidden" value="{{ $amazingProduct->En_name }}" name="name">
