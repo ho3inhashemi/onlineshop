@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AmazingProductController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\GlobalController;
 use App\Http\Controllers\OrderController;
@@ -17,13 +18,23 @@ use TCG\Voyager\Facades\Voyager;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [GlobalController::class, 'index'])
-    ->name('home');
+
+
+
+
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
+
+
+Route::group([
+    'middleware' => 'auth'
+], function () {
+
+Route::get('/', [GlobalController::class, 'index'])
+    ->name('home');
 
 Route::get('amazingproduct/{amazingProduct}', AmazingProductController::class)
     ->name('amazingproduct.show');
@@ -40,6 +51,12 @@ Route::get('cart/order',[OrderController::class, 'order'])
 Route::post('cart/order',[OrderController::class, 'orderStore'])
     ->name('cart.order.store');
 
+Route::get('cart/allorders',[OrderController::class, 'index'])
+    ->name('cart.allorders');
+    
+});
+
+
 
 
 Route::get('/signup',[\App\Http\Controllers\AuthController::class,'showSignupForm'])
@@ -49,10 +66,15 @@ Route::post('/signup',[\App\Http\Controllers\AuthController::class,'signup'])
     ->name('auth.signup');
 
 Route::get('signin',[\App\Http\Controllers\AuthController::class,'showSigninForm'])
-    ->name('auth.signin.form');
+    ->name('login');
 
 Route::post('signin',[\App\Http\Controllers\AuthController::class,'signin'])
     ->name('auth.signin');
+
+Route::get('signout',[AuthController::class,'logout'])
+    ->name('auth.signout');
+
+
 
 
 

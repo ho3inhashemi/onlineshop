@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreAuthRequest as RequestsStoreAuthRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -29,7 +30,7 @@ class AuthController extends Controller
 
         User::create($validated);
 
-        return redirect()->route('auth.signin.form')
+        return redirect()->route('login')
         ->with('message', 'You have registered successfully.');
     }
 
@@ -47,12 +48,22 @@ class AuthController extends Controller
             }else{
 
                return back()
-               ->with('message','ایمیل یا پسورد وارد شده صحیح نیست.');
+               ->with('message','email or password is incorrect.');
             }
         }
     }
 
+    public function logout(Request $request){
 
+    Auth::logout();
+
+    $request->session()->invalidate();
+
+    $request->session()->regenerateToken();
+
+    return redirect()
+    ->route('login');
+    }
 
 
 }

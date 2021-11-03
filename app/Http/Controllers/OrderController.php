@@ -8,6 +8,19 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+
+    public function index(){
+
+        $orders = auth()->user()->orders;
+
+        $orderItems = auth()->user()->orderItems;
+
+        return view('cart.allorders')
+            ->with('orders', $orders )
+            ->with('orderItems', $orderItems);
+
+    }
+
     public function order(){
 
         $items = \Cart::getContent();
@@ -23,13 +36,14 @@ class OrderController extends Controller
         $address = $request->address;
 
         $order = Order::query()->create([
+            'user_id' => auth()->id(),
             'address' => $address,
         ]);
 
 
         foreach($items as $row){
-        // $orderitem = OrderItem::query()->create([
             OrderItem::query()->create([
+            'user_id'=>auth()->user()->id,
             'order_id' => $order->id,
             'name' => $row->name ,
             'quantity' => $row->quantity,
