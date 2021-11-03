@@ -17,14 +17,13 @@ use TCG\Voyager\Facades\Voyager;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/', [GlobalController::class, 'index'])
+    ->name('home');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Route::get('/', [GlobalController::class, 'index'])
-    ->name('home');
 
 Route::get('amazingproduct/{amazingProduct}', AmazingProductController::class)
     ->name('amazingproduct.show');

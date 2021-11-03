@@ -22,7 +22,7 @@ class AuthController extends Controller
 
 
 
-    public function signup(Request $request ){
+    public function signup(RequestsStoreAuthRequest $request ){
 
         $validated = $request->validated();
         $validated['password'] = Hash::make($validated['password']);
