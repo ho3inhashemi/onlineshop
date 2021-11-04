@@ -53,7 +53,10 @@ Route::post('cart/order',[OrderController::class, 'orderStore'])
 
 Route::get('cart/allorders',[OrderController::class, 'index'])
     ->name('cart.allorders');
-    
+
+Route::get('comment/sore',[GlobalController::class,'commentStore'])
+    ->name('commentstore');
+
 });
 
 

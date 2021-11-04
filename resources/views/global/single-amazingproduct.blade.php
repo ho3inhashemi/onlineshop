@@ -29,6 +29,42 @@
     </div>
 </div>
 
+
+<!-- maybe will be changed with a separate component -->
+
+<h3 class="my-5 text-center">craete your comments & read others comments</h3>
+<hr class="my-5 text-center" />
+
+<form action="{{ route('commentstore') }}">
+    <input type="hidden" name="product_id" class="form-control" value="{{ $amazingProduct->id}}">
+    <input type="hidden" name="reply_id" class="form-control" value="0">
+    <textarea name="body" cols="60" rows="1" class="form-control" placeholder="your comment"></textarea><br />
+    <input type="submit" class="btn btn-primary"><br /><br />
+</form>
+
+
+@foreach($comments as $comment)
+   {{ $comment->body }}<br />
+   <form action="{{ route('commentstore') }}">
+   <textarea name="body" cols="60" rows="1" placeholder="your reply" class="mx-3 mt-2"></textarea><br />
+    <input type="hidden" name="product_id" class="form-control" value={{ $amazingProduct->id }}>
+    <input type="hidden" name="reply_id" class="form-control" value="{{ $comment->reply_id +1 }}">
+    <input type="submit" value="send" class="mx-3 mt-2 btn btn-primary">
+    </form>
+   @if ( $comment->replies )
+       @foreach($comment->replies as $rep)
+           {{ $rep->body }}<br />
+           <form action="{{ route('commentstore') }}">
+            <textarea name="body" cols="60" rows="1" class="form-control" placeholder="your reply" class="mx-3 mt-2"></textarea><br />
+             <input type="hidden" name="product_id" class="form-control" value={{ $amazingProduct->id }}>
+             <input type="hidden" name="reply_id" class="form-control" value="{{ $rep->reply_id +1 }}">
+             <input type="submit" value="send" class="mx-3 mt-2 btn btn-primary">
+             </form>
+
+       @endforeach
+   @endif
+@endforeach
+<br />
 </x-layout>
 
 
