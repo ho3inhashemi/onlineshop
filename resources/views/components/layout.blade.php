@@ -21,7 +21,7 @@
 </div>
 <div>
     <div class="dropdown mt-5">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">User Profile
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dear {{ auth()->user()->name }}
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
           <li><a href="{{ route('cart.list') }}" @unless (count(Cart::getContent()) > 0)
