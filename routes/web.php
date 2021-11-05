@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\GlobalController;
 use App\Http\Controllers\OrderController;
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
 
@@ -56,6 +58,11 @@ Route::get('cart/allorders',[OrderController::class, 'index'])
 
 Route::get('comment/sore',[GlobalController::class,'commentStore'])
     ->name('commentstore');
+
+Route::get('/email', function(){
+        Mail::to(auth()->user()->email)->send(new WelcomeMail());
+        return new WelcomeMail();
+    })->name('sendwelcomemail');
 
 });
 
