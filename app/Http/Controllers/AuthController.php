@@ -32,12 +32,7 @@ class AuthController extends Controller
         $validated = $request->validated();
         $validated['password'] = Hash::make($validated['password']);
 
-        User::create($validated);
-
-        $user_find = DB::table('users')->where('email', $request->email)->first();
-        $user_id = $user_find->id;
-        $user = User::find($user_id);
-
+        $user = User::create($validated);
 
         $enrollmentData = [
             'body' => 'You recieved a new test notification',
