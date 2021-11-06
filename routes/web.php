@@ -3,9 +3,12 @@
 use App\Http\Controllers\AmazingProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GlobalController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
 use App\Mail\WelcomeMail;
+use App\Models\Product;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
@@ -41,6 +44,9 @@ Route::group([
     Route::get('amazingproduct/{amazingProduct}', AmazingProductController::class)
         ->name('amazingproduct.show');
 
+    Route::get('product/{product}', [ProductController::class, 'show'])
+        ->name('product.show');
+
         Route::prefix('cart')->group(function(){
 
             Route::post('/', [CartController::class, 'addToCart'])
@@ -57,10 +63,14 @@ Route::group([
 
             Route::get('/allorders',[OrderController::class, 'index'])
                 ->name('cart.allorders');
+
             });
-            
+
     Route::get('comment/sore',[GlobalController::class,'commentStore'])
         ->name('commentstore');
+
+    Route::get('category/{category}',[CategoryController::class,'show'])
+        ->name('category.show');
 
     Route::get('/email', function(){
         Mail::to(auth()->user()->email)->send(new WelcomeMail());

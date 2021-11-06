@@ -17,7 +17,11 @@
 <h4>Main Menue</h4>
 
 <div>
-    {{  menu('main','bootstrap') }}
+    {{-- {{ $categories }} --}}
+    <a href="/">Home</a><br/>
+    @foreach ($categories as $category )
+     <a href="{{ route('category.show', ['category' => $category->id]) }}"> {{ $category->name }}</a> <br />
+     @endforeach
 </div>
 <div>
     <div class="dropdown mt-5">
