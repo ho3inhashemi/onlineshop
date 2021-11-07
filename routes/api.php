@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+//show method http verb -> get
+//store method http verb -> post
+//update method http verb -> put
+//index method http verb -> get
+//destroy method http verb -> delete
+
+// Route::resource('products', ProductsController::class);
+
+Route::group(['middleware' => ['auth:sanctum']], function() {
+    Route::resource('products', ProductsController::class);
+    Route::post('/logout', [UserController::class,'logout']);
 });
+
+Route::post('/register', [UserController::class,'register']);
+Route::post('/login', [UserController::class,'login']);
