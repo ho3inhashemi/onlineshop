@@ -20,8 +20,7 @@ class GlobalController extends Controller
         return view('global.index')
         // ->with('categories', $categories)
         ->with('sliders' , $sliders)
-        ->with('amazingProducts' , $amazingProducts)
-        ;
+        ->with('amazingProducts' , $amazingProducts);
     }
 
     public function commentStore(Request $request){

@@ -9,15 +9,11 @@ class AmazingProduct extends Model
 {
     use HasFactory;
     
+    protected $casts = [
+        'images' => 'array'
+    ];
+
+
     protected $fillable = [
-        'Fa-name',
-        'En-name',
-        'slug',
-        'price',
-        'explanation',
-        'status',
-        'img',
-        'views',
-        'discount',
 ];
 }

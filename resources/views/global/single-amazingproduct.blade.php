@@ -12,6 +12,7 @@
           <h4 class="card-title">{{ $amazingProduct->En_name }} </h4>
           <p class="card-text">{{ $amazingProduct->explanation }} </p>
 
+
           <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="hidden" value="{{ $amazingProduct->id }}" name="id">
@@ -34,6 +35,16 @@
         {{ $amazingProduct->explanation }}</li>
     </ul>
 </div>
+</div>
+
+<div class="row mt-4">
+
+    @for ($i = 0; $i < 3 ; $i++)
+    <div class="col-3">
+    <img class="card-img-top" src="{{ $amazingProduct->images[$i] }} " alt="Card image" style="width:100%">
+    </div>
+    @endfor
+
 </div>
 
 </div>

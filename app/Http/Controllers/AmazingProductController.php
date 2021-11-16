@@ -20,7 +20,7 @@ class AmazingProductController extends Controller
         {
             $amazingProduct = AmazingProduct::query()->where('slug',$slug)->firstOrFail();
 
-            // dd($amazingProduct->id);
+            
 
             $comments = Comment::with('replies')
                 ->where('reply_id','=',0)

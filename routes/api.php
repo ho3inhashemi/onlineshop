@@ -23,7 +23,6 @@ use Illuminate\Support\Facades\Route;
 //index method http verb -> get
 //destroy method http verb -> delete
 
-// Route::resource('products', ProductsController::class);
 
 Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::resource('products', ProductsController::class);

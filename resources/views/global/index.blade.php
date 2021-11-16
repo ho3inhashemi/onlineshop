@@ -53,7 +53,7 @@
                 <div class="card ">
                     <img class="card-img-top" src="{{ $amazingProduct->img }}" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">{{ $amazingProduct->title }} </h5>
+                      <h5 class="card-title">{{ $amazingProduct->En_name }} </h5>
                       <p class="card-text">{{ str_split($amazingProduct->explanation,130)[0] }}</p>
                     </div>
                 </div>

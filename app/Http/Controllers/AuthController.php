@@ -79,5 +79,4 @@ class AuthController extends Controller
     ->route('login');
     }
 
-
 }

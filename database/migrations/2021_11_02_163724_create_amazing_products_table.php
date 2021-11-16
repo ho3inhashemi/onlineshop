@@ -15,15 +15,13 @@ class CreateAmazingProductsTable extends Migration
     {
         Schema::create('amazing_products', function (Blueprint $table) {
             $table->id();
-            $table->text('Fa_name');
-            $table->text('En_name');
-            $table->text('slug')->unique();
+            $table->string('En_name');
+            $table->string('slug');
+            $table->text("explanation");
             $table->integer('price');
-            $table->text('explanation');
-            $table->string('status');
+            $table->integer('count');
             $table->string('img');
-            $table->integer('views');
-            $table->integer('discount');
+            $table->json('images');
             $table->timestamps();
         });
     }
